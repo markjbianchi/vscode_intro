@@ -1,0 +1,23 @@
+{
+	"folders": [
+    {
+      "name": "Examples",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "ant": true,
+      "connectivity": true,
+      "crypto": true,
+      "peripheral": true,
+      "peripheral_rf": true,
+      "proprietary_rf": true,
+      "usb_drivers": true,
+      "**/arm4": true,
+      "**/arm5_no_packs": true,
+      "**/iar": true,
+      "**/ses": true
+    }
+  }
+}

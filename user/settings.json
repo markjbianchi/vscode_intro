@@ -1,0 +1,229 @@
+{
+    "window.zoomLevel": 1,
+    "breadcrumbs.enabled": true,
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.editor.highlightModifiedTabs": true,
+
+    "workbench.settings.editor": "json",
+    //"workbench.settings.useSplitJSON": true,
+
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
+    "editor.fontSize": 11,
+    // "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontWeight": "normal",
+    "editor.occurrencesHighlight": false,
+    /*
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    */
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+
+    "zenMode.hideStatusBar": false,
+    // "zenMode.hideTabs": false,
+
+
+    // Vim extention (only differences from default included here)
+    //----------------------------------------------------------------
+    "vim.enableNeovim": true,       // enables some more powerful commands (must have nvim installed)
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    // settings that could have workspace/file overrides
+    //"editor.tabSize": 4,
+    //"editor.insertSpaces": true,
+    //"editor.wordWrap": "off",
+    //"editor.autoIndent": "full",
+    //"vim.autoindent": true,
+
+    "vim.gdefault": true,           // enables substitutions of all occurrances on a line
+    "vim.changeWordIncludesWhitespace": true,   // makes consistent with yw and dw
+    "vim.useSystemClipboard": true,
+    "vim.history": 400,             // remember more commands used
+    "vim.scroll": 10,
+    "vim.handleKeys": {
+        //"<C-h>": true
+        //"<C-l>": true,
+        "<C-k>": true,
+        "<C-j>": true,
+    },
+
+    "vim.insertModeKeyBindings": [
+        { // type jk instead of reaching for <esc>
+          "before": ["j", "k"],
+          "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [ ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // make L and H move the full line amount of l and h
+        {
+          "before": ["L"],
+          "after": ["$"]
+        },
+        {
+          "before": ["H"],
+          "after": ["^"]
+        },
+        { // yank entire line, act like other capital commands
+          "before": ["Y"],
+          "after": ["y", "$"]
+        },
+        // searches that keep results in middle of window
+        {
+          "before": ["*"],
+          "after": ["*", "z", "z"]
+        },
+        {
+          "before": ["#"],
+          "after": ["#", "z", "z"]
+        },
+        {
+          "before": ["n"],
+          "after": ["n", "z", "z"]
+        },
+        {
+          "before": ["N"],
+          "after": ["N", "z", "z"]
+        },
+        { // repeat execution of last run macro
+          "before": ["Q"],
+          "after": ["@", "@"]
+        },
+        // open a line below/above current one witout entering insert mode
+        {
+          "before": ["g", "o"],
+          "after": ["o", "<Esc>", "k", "^"]
+        },
+        {
+          "before": ["g", "O"],
+          "after": ["O", "<Esc>", "j", "^"]
+        },
+        { // select entire buffer in visual mode (like ctrl-A in windows)
+          "before": ["g", "y"],
+          "after": ["g", "g", "V", "G"]
+        },
+        { // standard vim ZZ to write and quite/clode buffer
+          "before": ["Z", "Z"],
+          "commands": [":wq"]
+        },
+        // vertically/horizontally split editor into two editors
+        {
+          "before": ["<leader>", "v", "s"],
+          "commands": ["workbench.action.splitEditor"]
+        },
+        { // \hs to horizontally split editor into two editors
+          "before": ["<leader>", "h", "s"],
+          "commands": ["workbench.action.splitEditorDown"]
+        },
+        // navigate splits with g command prepended to the analogous vim motion
+        {
+          "before": ["g", "h"],
+          "after": ["<C-w>", "h"]
+        },
+        {
+          "before": ["g", "j"],
+          "after": ["<C-w>", "j"]
+        },
+        {
+          "before": ["g", "k"],
+          "after": ["<C-w>", "k"]
+        },
+        {
+          "before": ["g", "l"],
+          "after": ["<C-w>", "l"]
+        },
+        { // <C-k> to recall command line history (similar to k motion)
+          "before": ["ctrl+k"],
+          "after": [":", "<Up>"]
+        },
+        { // \<space> to toggle on/off highlight search
+          "before": ["<leader>", "<space>"],
+          "commands": [":set hlsearch!"]
+        },
+        { // \w to turn on highlighting of trailing whitespace
+          "before": ["<leader>", "w"],
+          "commands": ["trailing-spaces.highlightTrailingSpaces"]
+        },
+        { // \W to delete trailing whitespace
+          "before": ["<leader>", "W"],
+          "commands": ["trailing-spaces.deleteTrailingSpaces"]
+        },
+        { // \b to toggle sidebar visability
+          "before": ["<leader>", "b"],
+          "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+          "before": ["<leader>", "f"],
+          "commands": ["revealInExplorer"]
+        },
+        {
+          "before": ["<leader>", "N"],
+          "commands": [
+            {
+              "command": "editor.renderWhitespace",
+              "args": ["all"]
+            }
+          ]
+        },
+    ],
+    "vim.visualModeKeyBindings": [ ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // make L and H move the full line amount of l and h
+        {
+          "before": ["H"],
+          "after": ["0"]
+        },
+        {
+          "before": ["L"],
+          "after": ["g", "_"]
+        },
+        // indent/outdent line using >/< or tab/shift+tab
+        {
+          "before": [ ">" ],
+          "commands": [ "editor.action.indentLines" ],
+        },
+        {
+          "before": ["<"],
+          "commands": ["editor.action.outdentLines"],
+        },
+        {
+          "before": ["tab"],
+          "commands": ["editor.action.indentLines"]
+        },
+        {
+          "before": ["shift+tab"],
+          "commands": ["editor.action.outdentLines"]
+        },
+    ],
+    "vim.commandLineModeKeyBindings": [ ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [
+        {
+          "before": ["ctrl+k"],
+          "after": ["<Up>"]
+        },
+        {
+          "before": ["ctrl+j"],
+          "after": ["<Down>"]
+        },
+     ],
+
+    // vim-sneak plugin emulation
+    //-------------------------
+    "vim.sneak": true,
+
+    // vim-surround plugin emulation
+    //-------------------------
+    // ys<motion><desired char>           surround something with something using motion
+    // S<desired char>                    surround when in visual mode
+    // ds<existing char>                  deletes existing surround
+    // cs<existing char><desired char>    deletes existing surround
+    // can use  t  to mean an html/xml tag
+    // use right )]}> to surround tight, left ([{< to separate with a space
+
+    // Trailing Spaces extention
+    //----------------------------------------------------------------
+    "trailing-spaces.syntaxIgnore": ["markdown"],
+    "trailing-spaces.highlightCurrentLine": false,
+}

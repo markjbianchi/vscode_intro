@@ -1,0 +1,36 @@
+{
+    "env": {
+        "myDefaultIncludePath": [
+                "${workspaceRoot}/**",
+                "../modules/**",
+                "../components/**",
+                "/usr/local/gcc-arm-none-eabi-9-2019-q4-major/arm-none-eabi/include"
+        ],
+        "myCompilerPath": "/usr/local/gcc-arm-none-eabi-9-2019-q4-major/bin"
+    },
+    "configurations": [
+        {
+            "name": "MacOS",
+            "includePath": [
+                "${env:myDefaultIncludePath}"
+            ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "${env:myDefaultIncludePath}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "${env:myCompilerPath}/arm-none-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
