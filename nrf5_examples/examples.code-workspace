@@ -7,11 +7,15 @@
   ],
   "settings": {
     "files.exclude": {
+      "802_15_4": true,
       "ant": true,
       "connectivity": true,
       "crypto": true,
+      "dtm": true,
+      "iot": true,
+      "multiprotocol": true,
+      "nfc": true,
       "peripheral": true,
-      "peripheral_rf": true,
       "proprietary_rf": true,
       "usb_drivers": true,
       "**/arm4": true,

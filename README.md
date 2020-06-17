@@ -1,20 +1,30 @@
 # Visual Studio Code Example Setup #
 
-This repository contains some example setups for using VS Code, a great free, open source, multi-platform editor/IDE that supports various languages and features through an extensive and ever-growing array of extensions/plugins. I have left Eclipse in favor of VS Code as it seems the depth and breadth of extensions (most critically for me - Vim) is outpacing those for Eclipes, and it is very light-weight and easy to be immediately productive.
+This repository contains some example setups for using VS Code, a great free, open source, multi-platform editor/IDE that supports numerous languages and features via an extensive and ever-growing array of extensions/plugins. I have abandoned Eclipse in favor of VS Code as it seems the depth and breadth of extensions (most critically for me - Vim) is outpacing those for Eclipe. It is very light-weight and therefore easy to become immediately productive.
 
-The simplest way to use vscode is just File->Open... and navigate to the root of your project. vscode will scan the directory tree, show the tree, index the files, and away you go. If you have a more complicated project involving multiple directory trees or want to customize what shows up in the project explorer, you can create a workspace file to configure this (but often this is not necessary).
+The simplest way to use vscode is just **File->Open...** and navigate to the root of your project. Vscode will scan the directory tree, show the tree, index the files, and away you go. If you have a more complicated project involving multiple directory trees or want to customize what shows up in the project explorer, you can create a workspace file to configure this (but often this is not necessary). Regardless of whether you have a specific workspace file set up, vscode considers any directory you open a _workspace_.
 
-There are a couple global configuration files (all vscode config files are JSON format) in your home directory (location varies with OS). The main one is `settings.json` which  configures look & feel, default behavior, etc. Additionally, there is `keybindings.json` if you want to customize shortcuts. On MacOS, these two files are located in `$HOME/Library/Application Support/Code/User/`.
+## Basic Setup ##
+
+There are two differnt scopes for configuring and setting how vscode behaves - user scope and workspace scope. All settings files are in JSON format. The user settings files are located in your home directory (exact path varies with OS). The main one is `settings.json` which  configures look & feel, default behavior, extensions, etc. Additionally, there is `keybindings.json` if you want to customize shortcuts. On MacOS, these two files are located in `$HOME/Library/Application Support/Code/User/`.
+
+In addition to the user scoped files, vscode houses workspace setting files in a `.vscode/` directory at the root of the project directory that you open. The typical files located here are `tasks.json`, `launch.json`, and a language configuration file (in the case of C it would be `c_cpp_properties.json`). These files are typically hand-edited from examples or templates in order to customize them for a project. Also, if you make workspace-specific changes (e.g., unique extension behavior, language formatting differences, etc.), a `settings.json` file will be created in this directory.
+
+`tasks.json` contains command-line tasks to be run, for example make commands if you project is make-based. These commands can be run by executing **Terminal->Run Task...**.
+
+Check out the full vscode documentation [here](https://code.visualstudio.com/docs).
 
 ## Repo Structure ##
 
-This repo contains 
+This repo contains example settings for user setttings, project/workspace settings, and a specific example for building and testing Nordic NRF5-SDK example embedded C projects. The directory structure is as follows:
 
-* `user/` - global configurations located in user home dir
+* `user/` - typical user scope settings located in user's home dir
 * `project/` - example template for new (embedded) C project
-* `nrf_examples/` - configuration for building and testing NRF-SDK example code
+* `nrf5_examples/` - configuration for building and testing NRF-SDK example code
 
-Talk about files/dirs in this repo
+When starting a new embedded C (i.e., cross-compile) project or converting a current one to use vscode, the `project/embed_C/.vscode/` directory can be copied into the project root directory and the contained files modified as needed.
+
+To use the NRF examples, copy the contents of the `nrf5_examples` directory into the `examples/` subdir of the NRF5-SDK. Then navigate to the desired example project and open its Makefile. With the makefile open, execute **Terminal->Run Task...** and select _make using open Makefile_ and then select the desired make command, e.g. _default_. This will run the make command in the directory containing the make file as if you had navigated to that directory and run the same _make default_ command from that directory. Likewise, if you want to debug this application, execute **Run Start Debugging** which will use the Makefile's directory and the `launch.json` file to start a debugger session on the target.
 
 ## Extentions Installed ##
 
@@ -27,7 +37,7 @@ The following list is my currently installed extentions. This is always an evolv
 * Git History by Don Jayamanne
 * TODO Highlight by Wayou Liu
 * Prettier - Code formatter by Esben Petersen:w
-* Trailing Spaces by Sardul Mahadik
+* Whitespace+ by Sardul Mahadik
 * markdownlint by David Anson
 * Code Runner by Jun Han
 * LinkerScript by Zixuan Wang
@@ -157,7 +167,7 @@ Miscellaneous:
     ~           toggle case char by char, or entire visual selection
     gp  gP      "go put", paste and leave cursor at end of pasted text
 
-## Mark's Customizations ##
+## My Customizations ##
 
 Here are my key customizations that deviate from standard vim. I have tried to make my vim (via `$HOME/.vimrc`), JetBrains IdeaVim (via `$HOME/.ideavimrc`) and vscode Vim (via `$HOME/Library/Application Support/Code/User/settings.json`) work as similar as possible, given the limitations of the JetBrains and vscode plugins/extentions. See my [dotfiles repo](https://github.com/markjbianchi/dotfiles) for my `.vimrc` and `.ideavimrc` files.
 
@@ -172,6 +182,8 @@ Searching:
     \N          toggle non-printable (tab, \n, etc) chars   TODO
     \vs         vertical split window into new editor tab
     \hs         horizontal split editor window              TODO
+    \w          toggle on/off trailing whitespace           TODO
+    \W          remove trailing whitespace                  TODO
 
  Editing shortcuts:
 
@@ -203,11 +215,20 @@ Editor window mappings
 
 VS Code's Vim (and Ideavim) doesn't support vim plugins, but rather has chosen to emulate a few of the most popular ones. Here are some quick hints for these, plus links to the original plugins.
 
-vim-commentary:
+vim-commentary[https://github.com/tpope/vim-commentary](https://github.com/tpope/vim-commentary):
+
     gcc         toggle line comment
     gC          toggle block comment in visual mode
 
-vim-surround:
+vim-surround[https://github.com/tpope/vim-surround](https://github.com/tpope/vim-surround):
+
+    ys{motion}{desired char}        surround something with something using motion
+    S{desired char}                 surround when in visual mode
+    ds{existing char}               deletes existing surround
+    cs{existing char}<desired char} deletes existing surround
+                                    use  t  to mean an html/xml tag
+                                    use right )]}> to surround tight
+                                    use left  ([{< to separate with a space
 
 vim-sneak [https://github.com/justinmk/vim-sneak](https://github.com/justinmk/vim-sneak):
 
@@ -215,8 +236,3 @@ vim-sneak [https://github.com/justinmk/vim-sneak](https://github.com/justinmk/vi
     S{char}{char}   s for forward, S for backward
     ;  ,        go to next match forward / backward
     <C-O>  ``   to return to starting point
-
- Better-WS:
-
-    \w          toggle on/off trailing whitespace           TODO
-    \W          remove trailing whitespace                  TODO

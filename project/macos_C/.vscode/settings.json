@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "example_file": true,
+    "example_dir": true,
+    "**/example_subdir": true,
+  }
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true
+}
