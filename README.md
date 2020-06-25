@@ -19,10 +19,10 @@ Check out the full vscode documentation [here](https://code.visualstudio.com/doc
 This repo contains example settings for user setttings, project/workspace settings, and a specific example for building and testing Nordic NRF5-SDK example embedded C projects. The directory structure is as follows:
 
 * `user/` - typical user scope settings located in user's home dir
-* `project/` - example template for new (embedded) C project
+* `project/` - example template for new C and embedded C projects
 * `nrf5_examples/` - configuration for building and testing NRF-SDK example code
 
-When starting a new embedded C (i.e., cross-compile) project or converting a current one to use vscode, the `project/embed_C/.vscode/` directory can be copied into the project root directory and the contained files modified as needed.
+When starting a new C project or converting a current one to use vscode, the `project/macos_C/.vscode/` directory can be copied into the project root directory and the contained files modified as needed. Likewise, when starting a new embedded C (i.e., cross-compile) project, the `project/embed_C/.vscode/` directory can be copied and modified as needed.
 
 To use the NRF examples, copy the contents of the `nrf5_examples` directory into the `examples/` subdir of the NRF5-SDK. Then navigate to the desired example project and open its Makefile. With the makefile open, execute **Terminal->Run Task...** and select _make using open Makefile_ and then select the desired make command, e.g. _default_. This will run the make command in the directory containing the make file as if you had navigated to that directory and run the same _make default_ command from that directory. Likewise, if you want to debug this application, execute **Run Start Debugging** which will use the Makefile's directory and the `launch.json` file to start a debugger session on the target.
 
