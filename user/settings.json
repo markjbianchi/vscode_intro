@@ -4,6 +4,7 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
     "workbench.editor.highlightModifiedTabs": true,
+    "editor.renderWhitespace": "none",
 
     "workbench.settings.editor": "json",
     //"workbench.settings.useSplitJSON": true,
@@ -37,7 +38,6 @@
     //"editor.autoIndent": "full",
     //"vim.autoindent": true,
 
-    "vim.gdefault": true,           // enables substitutions of all occurrances on a line
     "vim.changeWordIncludesWhitespace": true,   // makes consistent with yw and dw
     "vim.useSystemClipboard": true,
     "vim.history": 400,             // remember more commands used
@@ -46,7 +46,7 @@
         //"<C-h>": true
         //"<C-l>": true,
         "<C-k>": true,
-        "<C-j>": true,
+        "<C-j>": true
     },
 
     "vim.insertModeKeyBindings": [
@@ -142,14 +142,6 @@
           "before": ["<leader>", "<space>"],
           "commands": [":set hlsearch!"]
         },
-        { // \w to turn on highlighting of trailing whitespace
-          "before": ["<leader>", "w"],
-          "commands": ["trailing-spaces.highlightTrailingSpaces"]
-        },
-        { // \W to delete trailing whitespace
-          "before": ["<leader>", "W"],
-          "commands": ["trailing-spaces.deleteTrailingSpaces"]
-        },
         { // \b to toggle sidebar visability
           "before": ["<leader>", "b"],
           "commands": ["workbench.action.toggleSidebarVisibility"]
@@ -157,16 +149,7 @@
         {
           "before": ["<leader>", "f"],
           "commands": ["revealInExplorer"]
-        },
-        {
-          "before": ["<leader>", "N"],
-          "commands": [
-            {
-              "command": "editor.renderWhitespace",
-              "args": ["all"]
-            }
-          ]
-        },
+        }
     ],
     "vim.visualModeKeyBindings": [ ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -182,11 +165,11 @@
         // indent/outdent line using >/< or tab/shift+tab
         {
           "before": [ ">" ],
-          "commands": [ "editor.action.indentLines" ],
+          "commands": [ "editor.action.indentLines" ]
         },
         {
           "before": ["<"],
-          "commands": ["editor.action.outdentLines"],
+          "commands": ["editor.action.outdentLines"]
         },
         {
           "before": ["tab"],
@@ -195,7 +178,7 @@
         {
           "before": ["shift+tab"],
           "commands": ["editor.action.outdentLines"]
-        },
+        }
     ],
     "vim.commandLineModeKeyBindings": [ ],
     "vim.commandLineModeKeyBindingsNonRecursive": [
@@ -206,7 +189,7 @@
         {
           "before": ["ctrl+j"],
           "after": ["<Down>"]
-        },
+        }
      ],
 
     // vim-sneak plugin emulation
@@ -215,15 +198,6 @@
 
     // vim-surround plugin emulation
     //-------------------------
-    // ys<motion><desired char>           surround something with something using motion
-    // S<desired char>                    surround when in visual mode
-    // ds<existing char>                  deletes existing surround
-    // cs<existing char><desired char>    deletes existing surround
-    // can use  t  to mean an html/xml tag
-    // use right )]}> to surround tight, left ([{< to separate with a space
+    "vim.surround": true
 
-    // Trailing Spaces extention
-    //----------------------------------------------------------------
-    "trailing-spaces.syntaxIgnore": ["markdown"],
-    "trailing-spaces.highlightCurrentLine": false,
 }
